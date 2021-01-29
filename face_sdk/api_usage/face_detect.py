@@ -48,7 +48,7 @@ if __name__ == '__main__':
     # read image
     image_path = 'api_usage/test_images/test1.jpg'
     image = cv2.imread(image_path, cv2.IMREAD_COLOR)
-    faceDetModelHandler = FaceDetModelHandler(model, 'cuda:0', cfg)
+    faceDetModelHandler = FaceDetModelHandler(model, 'cpu', cfg)
 
     try:
         dets = faceDetModelHandler.inference_on_image(image)

@@ -49,11 +49,12 @@ if __name__ == '__main__':
     # read image
     image_path = 'api_usage/test_images/test1_cropped.jpg'
     image = cv2.imread(image_path)
-    faceRecModelHandler = FaceRecModelHandler(model, 'cuda:0', cfg)
+    faceRecModelHandler = FaceRecModelHandler(model, 'cpu', cfg)
 
     try:
         feature = faceRecModelHandler.inference_on_image(image)
     except Exception as e:
+        print(str(e))
         logger.error('Failed to extract facial features!')
         sys.exit(-1)
     else:

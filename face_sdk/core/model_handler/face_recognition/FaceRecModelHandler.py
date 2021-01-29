@@ -30,6 +30,9 @@ class FaceRecModelHandler(BaseModelHandler):
         self.std = self.cfg['std']
         self.input_height = self.cfg['input_height']
         self.input_width = self.cfg['input_width']
+
+        if self.device.type == "cpu":
+            self.model = self.model.module.cpu()
         
     def inference_on_image(self, image):
         """Get the inference of the image.

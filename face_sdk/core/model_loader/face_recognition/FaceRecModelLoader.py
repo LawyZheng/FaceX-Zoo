@@ -22,7 +22,7 @@ class FaceRecModelLoader(BaseModelLoader):
         
     def load_model(self):
         try:
-            model = torch.load(self.cfg['model_file_path'])
+            model = torch.load(self.cfg['model_file_path'], map_location=torch.device('cpu'))
         except Exception as e:
             logger.error('The model failed to load, please check the model path: %s!'
                          % self.cfg['model_file_path'])

@@ -25,7 +25,7 @@ class ModelLoader:
             model(object): initialized model.
         """
         self.model.load_state_dict(torch.load(model_path)['state_dict'], strict=True) 
-        model = torch.nn.DataParallel(self.model).cuda()
+        model = torch.nn.DataParallel(self.model).cpu()
         return model
 
     def load_model(self, model_path):
@@ -49,5 +49,5 @@ class ModelLoader:
             #new_pretrained_dict[k] = pretrained_dict[k] # co-mining
         model_dict.update(new_pretrained_dict)
         self.model.load_state_dict(model_dict)
-        model = torch.nn.DataParallel(self.model).cuda()
+        model = torch.nn.DataParallel(self.model).cpu()
         return model

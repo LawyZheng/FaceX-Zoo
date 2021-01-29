@@ -38,7 +38,7 @@ if __name__ == '__main__':
     try:
         faceDetModelLoader = FaceDetModelLoader(model_path, model_category, model_name)
         model, cfg = faceDetModelLoader.load_model()
-        faceDetModelHandler = FaceDetModelHandler(model, 'cuda:0', cfg)
+        faceDetModelHandler = FaceDetModelHandler(model, 'cpu', cfg)
     except Exception as e:
         logger.error('Falied to load face detection Model.')
         logger.error(e)
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     try:
         faceAlignModelLoader = FaceAlignModelLoader(model_path, model_category, model_name)
         model, cfg = faceAlignModelLoader.load_model()
-        faceAlignModelHandler = FaceAlignModelHandler(model, 'cuda:0', cfg)
+        faceAlignModelHandler = FaceAlignModelHandler(model, 'cpu', cfg)
     except Exception as e:
         logger.error('Failed to load face landmark model.')
         logger.error(e)
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     try:
         faceRecModelLoader = FaceRecModelLoader(model_path, model_category, model_name)
         model, cfg = faceRecModelLoader.load_model()
-        faceRecModelHandler = FaceRecModelHandler(model, 'cuda:0', cfg)
+        faceRecModelHandler = FaceRecModelHandler(model, 'cpu', cfg)
     except Exception as e:
         logger.error('Failed to load face recognition model.')
         logger.error(e)
@@ -77,7 +77,7 @@ if __name__ == '__main__':
         logger.info('Success!')
 
     # read image and get face features.
-    image_path = 'api_usage/test_images/test1.jpg'
+    image_path = 'api_usage/test_images/test1_cropped.jpg'
     image = cv2.imread(image_path, cv2.IMREAD_COLOR)
     face_cropper = FaceRecImageCropper()
     try:

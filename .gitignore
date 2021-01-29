@@ -1,0 +1,7 @@
+.vscode
+.vscode
+face_sdk/images
+face_sdk/test_images
+face_sdk/logs
+face_sdk/models/network_def/__pycache__
+face_sdk/utils/__pycache__
