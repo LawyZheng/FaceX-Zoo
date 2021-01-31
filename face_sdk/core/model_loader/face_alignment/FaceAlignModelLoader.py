@@ -19,9 +19,12 @@ class FaceAlignModelLoader(BaseModelLoader):
         super().__init__(model_path, model_category, model_name, meta_file)
         self.cfg['img_size'] = self.meta_conf['input_width']
         
-    def load_model(self):
+    def load_model(self, device='cpu'):
         try:
-            model = torch.load(self.cfg['model_file_path'], map_location=torch.device('cpu'))
+            if (device == 'cpu'):
+                model = torch.load(self.cfg['model_file_path'], map_location=torch.device('cpu'))
+            else:
+                model = torch.load(self.cfg['model_file_path'])
         except Exception as e:
             logger.error('The model failed to load, please check the model path: %s!'
                          % self.cfg['model_file_path'])

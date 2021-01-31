@@ -89,7 +89,7 @@ if __name__ == '__main__':
         # source_list += get_face_feature_list(path+each_source, det_model, alig_model, rec_model)
         # name_list.append(each_source.split(".")[0])
     
-    target_path = '/lawyzheng/FaceX-Zoo/face_sdk/test_images/10.jpg'
+    target_path = '/lawyzheng/FaceX-Zoo/face_sdk/test_images/11.jpg'
     target_feature_list = get_face_feature_list(target_path, det_model, alig_model, rec_model)
     
     result = list()

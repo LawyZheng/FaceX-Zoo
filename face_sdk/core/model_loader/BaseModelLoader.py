@@ -44,7 +44,7 @@ class BaseModelLoader(metaclass=ABCMeta):
         self.cfg['input_width'] = self.meta_conf['input_width']
 
     @abstractmethod
-    def load_model(self):
+    def load_model(self, device='cpu'):
         """Should be overridden by all subclasses.
         Different models may have different configuration information,
         such as mean, so each model implements its own loader

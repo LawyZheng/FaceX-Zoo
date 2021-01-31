@@ -20,9 +20,12 @@ class FaceRecModelLoader(BaseModelLoader):
         self.cfg['mean'] = self.meta_conf['mean']
         self.cfg['std'] = self.meta_conf['std']
         
-    def load_model(self):
+    def load_model(self, device='cpu'):
         try:
-            model = torch.load(self.cfg['model_file_path'], map_location=torch.device('cpu'))
+            if (device == 'cpu'):
+                model = torch.load(self.cfg['model_file_path'], map_location=torch.device('cpu'))
+            else:
+                model = torch.load(self.cfg['model_file_path'])
         except Exception as e:
             logger.error('The model failed to load, please check the model path: %s!'
                          % self.cfg['model_file_path'])
